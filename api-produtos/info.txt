@@ -1,0 +1,17 @@
+Anotações JPA;
+
+esse @ é um anotation!
+
+@Entity, criar tabela, exemplo:
+
+
+tipos primitivos e tipo de classe
+
+para ser 100% um objeto não pode ter nada primitivo,
+rapper, classe int, Integer
+
+Interface classe abstrata, que só fala o método
+
+final no java é igual a const, imutavel
+
+map, percorre uma lista e para cada lista vai pegar o produto da req e altera o produto
