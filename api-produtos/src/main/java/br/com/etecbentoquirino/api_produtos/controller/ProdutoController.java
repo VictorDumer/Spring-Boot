@@ -1,29 +1,25 @@
 package br.com.etecbentoquirino.api_produtos.controller;
 
-import org.aspectj.apache.bcel.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
-import br.com.etecbentoquirino.api_produtos.repository.*;
-import br.com.etecbentoquirino.api_produtos.model.*;
+import br.com.etecbentoquirino.api_produtos.model.Produto;
+import br.com.etecbentoquirino.api_produtos.repository.ProdutoRepository;
 
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
-    public ProdutoController(){
 
-    }
-
-    private ProdutoRepository repository;
     
+    private final ProdutoRepository repository;
+    public ProdutoController(ProdutoRepository repository){
+        this.repository = repository;
+    }
     @PostMapping
     public Produto criar(@RequestBody Produto produto){
         return repository.save(produto);
         }
+        
     @GetMapping
     public List<Produto> listar(){
         return repository.findAll();
@@ -32,4 +28,5 @@ public class ProdutoController {
     public Produto buscar(@PathVariable Long id){
         return repository.findById(id).orElse(null);
     }
+   
 }
