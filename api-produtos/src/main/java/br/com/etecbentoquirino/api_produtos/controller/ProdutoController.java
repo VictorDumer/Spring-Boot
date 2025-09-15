@@ -28,5 +28,18 @@ public class ProdutoController {
     public Produto buscar(@PathVariable Long id){
         return repository.findById(id).orElse(null);
     }
-   
+
+    @PutMapping("/{id}")
+    public Produto atualizar(@PathVariable Long id, @RequestBody Produto novoProduto){
+        return repository.findById(id).map(produto ->{
+            produto.setNome(novoProduto.getNome());
+            produto.setPreco(novoProduto.getPreco());
+            return repository.save(produto);
+        }).orElse(null);
+    }
+
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable Long id){
+        repository.deleteById(id);
+    }
 }
